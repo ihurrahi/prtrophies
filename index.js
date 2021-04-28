@@ -14,7 +14,6 @@ module.exports = (app) => {
   app.on(
     "pull_request.opened",
     async (context) => {
-      app.log.info(context.payload);
       const number = context.payload.number;
       let body = null;
       if (isMilestone(number)) {

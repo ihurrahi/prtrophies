@@ -1,11 +1,11 @@
 {
-  "name": "trophybot",
+  "name": "prtrophies",
   "version": "1.0.0",
   "private": true,
   "description": "A Github App built with Probot that awards PRs with trophies.",
   "author": "Andrew Lau <thinkingalaud@gmail.com>",
   "license": "ISC",
-  "homepage": "https://github.com/ihurrahi/trophybot",
+  "homepage": "https://github.com/ihurrahi/prtrophies",
   "keywords": [
     "probot",
     "github",
