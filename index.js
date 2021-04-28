@@ -16,6 +16,7 @@ module.exports = (app) => {
     async (context) => {
       app.log.info(context.payload);
       const number = context.payload.number;
+      let body = null;
       if (isMilestone(number)) {
         body = milestoneBody(number);
       }
