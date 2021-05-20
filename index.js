@@ -3,7 +3,7 @@ function isMilestone(number) {
 }
 
 function milestoneBody(number) {
-  return `Congratulations on opening PR #${number}! ![trophy](https://image.shutterstock.com/image-vector/trophy-cup-award-vector-icon-260nw-592525184.jpg)`;
+  return `Congratulations on opening PR #${number}! ![trophy](https://i.imgur.com/eKEDalI.png)`;
 }
 
 /**
