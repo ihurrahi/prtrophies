@@ -7,7 +7,7 @@ async function track(payload) {
     'https://www.google-analytics.com/collect',
     {
       method: "POST",
-      body: `v=1&tid=${GA_TRACKING_ID}&cid=${payload.installation.account.id}&t=event&ec=App&ea=${payload.action}`,
+      body: `v=1&tid=${GA_TRACKING_ID}&uid=${payload.installation.account.id}&t=event&ec=App&ea=${payload.action}`,
     },
   ).then(async (response) => {
     if (!response.ok) {
