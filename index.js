@@ -1,3 +1,22 @@
+const fetch = require('node-fetch');
+
+const { GA_TRACKING_ID } = process.env;
+
+async function track(payload) {
+  fetch(
+    'https://www.google-analytics.com/collect',
+    {
+      method: "POST",
+      body: `v=1&tid=${GA_TRACKING_ID}&cid=${payload.installation.account.id}&t=event&ec=App&ea=${payload.action}`,
+    },
+  ).then(async (response) => {
+    if (!response.ok) {
+      const body = await response.text();
+      console.log(body);
+    }
+  })
+}
+
 function isMilestone(number) {
   return number > 1000 && number % 1000 === 0;
 }
@@ -18,7 +37,12 @@ function palindromeBody(number) {
  * @param {import('probot').Probot} app
  */
 module.exports = (app) => {
-  // Your code here
+  app.on(
+    "installation.created",
+    async (context) => {
+      track(context.payload);
+    }
+  );
   app.on(
     "pull_request.opened",
     async (context) => {
