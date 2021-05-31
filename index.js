@@ -38,7 +38,7 @@ function palindromeBody(number) {
  */
 module.exports = (app) => {
   app.on(
-    "installation.created",
+    ["installation.created", "installation.deleted"],
     async (context) => {
       track(context.payload);
     }
