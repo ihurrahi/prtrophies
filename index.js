@@ -1,13 +1,21 @@
 const fetch = require('node-fetch');
 
-const { GA_TRACKING_ID } = process.env;
+const { GA_MEASUREMENT_ID, GA_API_SECRET } = process.env;
 
 async function track(payload) {
+  const body = {
+    client_id: 'glitch',
+    user_id: payload.installation.account.id,
+    events: [
+      { name: payload.action, params: {} },
+    ],
+  };
   fetch(
-    'https://www.google-analytics.com/collect',
+    `https://www.google-analytics.com/mp/collect?measurement_id=${GA_MEASUREMENT_ID}&api_secret=${GA_API_SECRET}`,
     {
-      method: "POST",
-      body: `v=1&tid=${GA_TRACKING_ID}&uid=${payload.installation.account.id}&t=event&ec=App&ea=${payload.action}`,
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(body),
     },
   ).then(async (response) => {
     if (!response.ok) {
