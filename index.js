@@ -7,7 +7,7 @@ async function track(payload) {
     client_id: payload.installation.account.id,
     user_id: payload.installation.account.id,
     events: [
-      { name: payload.action, engagement_time_msec: 1, params: {} },
+      { name: payload.action, params: { engagement_time_msec: 1 } },
     ],
   };
   fetch(
