@@ -4,10 +4,10 @@ const { GA_MEASUREMENT_ID, GA_API_SECRET } = process.env;
 
 async function track(payload) {
   const body = {
-    client_id: 'glitch',
+    client_id: payload.installation.account.id,
     user_id: payload.installation.account.id,
     events: [
-      { name: payload.action, params: {} },
+      { name: payload.action, engagement_time_msec: 1, params: {} },
     ],
   };
   fetch(
